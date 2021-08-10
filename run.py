@@ -5,6 +5,6 @@ for i in range(0, 5):
 
 def whole_board(board):
     for i in board:
-        print(i)
+        print(" ".join(i))
 
 whole_board(board)
