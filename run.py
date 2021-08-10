@@ -2,8 +2,10 @@ from random import randint
 
 board = []
 
-for i in range(0, 5):
-    board.append(["0"] *5)
+board_size = 6
+
+for i in range(board_size):
+    board.append(["0"] * board_size)
 
 def whole_board(board):
     for i in board:
@@ -28,6 +30,15 @@ print(ship_col)
 if guess_row == ship_row and guess_col == ship_col:
     print("Congratulations you have sunk my ship!!!")
 else:
-    print("You missed my ship!")
-    board[guess_row][guess_col] = "x"
-    whole_board(board)
+    """
+    Add if statment for users 
+    Input numbers that are bigger than the board
+    """
+    if guess_row > board_size or guess_col > board_size:
+        print("Oops thats not in the ocean range please try again!")
+    elif board[guess_row][guess_col] == "x":
+        print("You already guessed this one already!")
+    else:
+        print("You missed my ship!")
+        board[guess_row][guess_col] = "x"
+        whole_board(board)
