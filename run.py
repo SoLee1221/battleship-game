@@ -28,7 +28,6 @@ for turn in range(4):
     print("Round", turn + 1)
 
     guess_row = input("guess_row: ")
-    guess_col = input("guess_col: ")
     valid_input = True
 
     try:
@@ -42,6 +41,24 @@ for turn in range(4):
         valid_input = True
         try:
             guess_row = int(guess_row)
+        except ValueError:
+            print("That's not a valid input!")
+            valid_input = False
+    
+    guess_col = input("guess_col: ")
+    valid_input = True
+
+    try:
+        guess_row = int(guess_col)
+    except ValueError:
+        print("That's not a valid input!")
+        valid_input = False
+
+    while not valid_input:
+        guess_col = input("guess_row: ")
+        valid_input = True
+        try:
+            guess_row = int(guess_col)
         except ValueError:
             print("That's not a valid input!")
             valid_input = False
