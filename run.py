@@ -37,11 +37,13 @@ for turn in range(4):
         Add if statment for users 
         Input numbers that are bigger than the board
         """
-        if guess_row > board_size or guess_col > board_size:
+        if guess_row > board_size or guess_col > board_size or guess_row < 0 or guess_col < 0:
             print("Oops thats not in the ocean range please try again!")
         elif board[guess_row][guess_col] == "x":
             print("You already guessed this one already!")
         else:
             print("You missed my ship!")
             board[guess_row][guess_col] = "x"
+            if turn == 3:
+                print("Game Over!!")
             whole_board(board)
