@@ -24,8 +24,13 @@ ship_col = random_col(board)
 print(ship_row)
 print(ship_col)
 
-for turn in range(4):
+for turn in range(10):
     print("Round", turn + 1)
+
+    """
+    Create try function for incorrect input and correct input by user
+    col and row example none integer or str
+    """
 
     guess_row = input("guess_row: ")
     valid_input = True
@@ -37,7 +42,7 @@ for turn in range(4):
         valid_input = False
 
     while not valid_input:
-        guess_row = input("guess_col: ")
+        guess_row = input("guess_row: ")
         valid_input = True
         try:
             guess_row = int(guess_row)
@@ -49,16 +54,16 @@ for turn in range(4):
     valid_input = True
 
     try:
-        guess_row = int(guess_col)
+        guess_col = int(guess_col)
     except ValueError:
         print("That's not a valid input!")
         valid_input = False
 
     while not valid_input:
-        guess_col = input("guess_row: ")
+        guess_col = input("guess_col: ")
         valid_input = True
         try:
-            guess_row = int(guess_col)
+            guess_col = int(guess_col)
         except ValueError:
             print("That's not a valid input!")
             valid_input = False
@@ -79,6 +84,6 @@ for turn in range(4):
         else:
             print("You missed my ship!")
             board[guess_row][guess_col] = "X"
-            if turn == 3:
+            if turn == 9:
                 print("Game Over!!")
             whole_board(board)
