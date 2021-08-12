@@ -37,9 +37,12 @@ for turn in range(10):
 
     try:
         guess_row = int(guess_row)
+        if guess_row >= board_size or guess_row < 0:
+            print("Invalid input")
     except ValueError:
         print("That's not a valid input!")
         valid_input = False
+        
 
     while not valid_input:
         guess_row = input("guess_row: ")
@@ -77,13 +80,13 @@ for turn in range(10):
         Add if statment for user 
         Input numbers that are bigger than the board
         """
-        if guess_row > board_size or guess_col > board_size or guess_row < 0 or guess_col < 0:
+        if guess_row >= board_size or guess_col >= board_size or guess_row < 0 or guess_col < 0:
             print("Oops thats not in the ocean range please try again!")
-        elif board[guess_row][guess_col] == "X":
+        elif board[guess_row][guess_col] == "x":
             print("You already guessed this one already!")
         else:
             print("You missed my ship!")
-            board[guess_row][guess_col] = "X"
+            board[guess_row][guess_col] = "x"
             if turn == 9:
                 print("Game Over!!")
             whole_board(board)
