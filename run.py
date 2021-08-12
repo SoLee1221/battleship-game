@@ -39,6 +39,7 @@ for turn in range(10):
         guess_row = int(guess_row)
         if guess_row >= board_size or guess_row < 0:
             print("Invalid input")
+            valid_input = False
     except ValueError:
         print("That's not a valid input!")
         valid_input = False
@@ -49,6 +50,9 @@ for turn in range(10):
         valid_input = True
         try:
             guess_row = int(guess_row)
+            if guess_row >= board_size or guess_row < 0:
+                print("Invalid input")
+                valid_input = False
         except ValueError:
             print("That's not a valid input!")
             valid_input = False
