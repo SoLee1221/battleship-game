@@ -1,11 +1,12 @@
 from random import randint
 
-board = []
+player_board = []
+ai_board = []
 
 board_size = 6
 
 for i in range(board_size):
-    board.append(["0"] * board_size)
+    board.append(["."] * board_size)
 
 def whole_board(board):
     for i in board:
@@ -24,6 +25,11 @@ ship_col = random_col(board)
 print(ship_row)
 print(ship_col)
 number_of_rounds = 10
+empty_char = "."
+miss_char = "0"
+ship_char = "I"
+hit_chat = "X"
+
 
 """
 Create try function for incorrect input and correct input by user
@@ -58,7 +64,7 @@ def guess_input():
             valid_input = False
     return guess_input   
 
-def output_game():
+def output_game(last_round):
     if guess_row == ship_row and guess_col == ship_col:
         print("Congratulations you have sunk my ship!!!")
         #todo
@@ -70,13 +76,24 @@ def output_game():
             board[guess_row][guess_col] = "x"
             whole_board(board)
 
-def last_round():
-    if number_of_rounds == last_round
-    print("Game Over!!!")
-
-for turn in range(number_of_rounds):
-    print("Round", turn + 1)
+def player_turn():
     guess_row = guess_input()
     guess_col = guess_input()
-    output_game()
-    last_round()
+    fire(guess_row, guess_col, ai_board)
+
+def ai_turn():
+    guess_row = guess_input()
+    guess_col = guess_input()
+    fire(guess_row, guess_col, player_board)
+
+for turn in range(number_of_rounds):
+    player_turn()
+    if is_dead(ai_board):
+        print("You win!")
+        break
+    ai_turn()
+    if is_dead(player_board):
+        print("You loose!")
+        break
+    print("Round", turn + 1)
+    output_game(turn == number_of_rounds -1)
