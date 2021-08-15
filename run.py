@@ -24,49 +24,18 @@ ship_col = random_col(board)
 print(ship_row)
 print(ship_col)
 
-for turn in range(10):
-    print("Round", turn + 1)
-
 """
 Create try function for incorrect input and correct input by user
 col and row example none integer or str
 """
-    def guess_input(row):
-        guess_row = input("guess_row: ")
-        valid_input = True
-        try:
-            guess_row = int(guess_row)
-        if guess_row >= board_size or guess_row < 0:
-            print("Invalid input")
-            valid_input = False
-        except ValueError:
-            print("That's not a valid input!")
-            valid_input = False
-        return guess_row()
-"""
-Repeats invalid input until user inputs 
-correct data to progress further in the game
-"""
-        while not valid_input:
-            guess_row = input("guess_row: ")
-            valid_input = True
-            try:
-                guess_row = int(guess_row)
-                if guess_row >= board_size or guess_row < 0:
-                    print("Invalid input")
-                    valid_input = False
-            except ValueError:
-                print("That's not a valid input!")
-                valid_input = False
-    
-    guess_col = input("guess_col: ")
+def guess_input(row):
+    guess_row = input("guess_row: ")
     valid_input = True
-
     try:
-        guess_col = int(guess_col)
-        if guess_col >= board_size or guess_col < 0:
-            print("Invalid input")
-            valid_input = False
+        guess_row = int(guess_row)
+    if guess_row >= board_size or guess_row < 0:
+        print("Invalid input")
+        valid_input = False
     except ValueError:
         print("That's not a valid input!")
         valid_input = False
@@ -75,33 +44,31 @@ Repeats invalid input until user inputs
 correct data to progress further in the game
 """
     while not valid_input:
-        guess_col = input("guess_col: ")
+        guess_row = input("guess_row: ")
         valid_input = True
         try:
-            guess_col = int(guess_col)
-            if guess_col >= board_size or guess_col < 0:
+            guess_row = int(guess_row)
+            if guess_row >= board_size or guess_row < 0:
                 print("Invalid input")
                 valid_input = False
         except ValueError:
             print("That's not a valid input!")
             valid_input = False
+    return guess_row
+    
 
-    def output_game():
-        if guess_row == ship_row and guess_col == ship_col:
-            print("Congratulations you have sunk my ship!!!")
-            break
+def output_game():
+    if guess_row == ship_row and guess_col == ship_col:
+        print("Congratulations you have sunk my ship!!!")
+        break
+    else:
+        if guess_row >= board_size or guess_col >= board_size or guess_row < 0 or guess_col < 0:
+            print("Oops thats not in the ocean range please try again!")
+        elif board[guess_row][guess_col] == "x":
+            print("You already guessed this one already!")
         else:
-            """
-            Add if statment for user 
-            Input numbers that are bigger than the board
-            """
-            if guess_row >= board_size or guess_col >= board_size or guess_row < 0 or guess_col < 0:
-                print("Oops thats not in the ocean range please try again!")
-            elif board[guess_row][guess_col] == "x":
-                print("You already guessed this one already!")
-            else:
-                print("You missed my ship!")
-                board[guess_row][guess_col] = "x"
-                if turn == 9:
-                    print("Game Over!!")
-                whole_board(board)
+            print("You missed my ship!")
+            board[guess_row][guess_col] = "x"
+            if turn == 9:
+                print("Game Over!!")
+            whole_board(board)
