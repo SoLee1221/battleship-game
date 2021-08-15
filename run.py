@@ -28,7 +28,7 @@ print(ship_col)
 Create try function for incorrect input and correct input by user
 col and row example none integer or str
 """
-def guess_input(row):
+def guess_input():
     guess_row = input("guess_row: ")
     valid_input = True
     try:
@@ -57,18 +57,22 @@ correct data to progress further in the game
     return guess_row
     
 
-def output_game():
+def output_game(last_turn):
+    game_over = False
     if guess_row == ship_row and guess_col == ship_col:
         print("Congratulations you have sunk my ship!!!")
         break
     else:
-        if guess_row >= board_size or guess_col >= board_size or guess_row < 0 or guess_col < 0:
-            print("Oops thats not in the ocean range please try again!")
-        elif board[guess_row][guess_col] == "x":
+        if board[guess_row][guess_col] == "x":
             print("You already guessed this one already!")
         else:
             print("You missed my ship!")
             board[guess_row][guess_col] = "x"
-            if turn == 9:
+            if last_turn:
                 print("Game Over!!")
             whole_board(board)
+
+for turn in range(10):
+    print("Round", turn + 1)
+    guess_input()
+    output_game(last_turn)
