@@ -18,7 +18,7 @@ def guess_random():
 
 number_of_rounds = 10
 empty_char = "."
-miss_char = "x"
+miss_char = "X"
 ship_char = "@"
 hit_char = "*"
 
@@ -84,9 +84,13 @@ def ai_turn():
     return fire(guess_row, guess_col, player_board)
 
 def place_ship(board):
-    ship_row = guess_random()
-    ship_col = guess_random()
-    board[ship_row][ship_col] = ship_char
+    ships = 0
+    while ships < 3:
+        ship_row = guess_random()
+        ship_col = guess_random()
+        if board[ship_row][ship_col] != ship_char:
+            board[ship_row][ship_col] = ship_char
+            ships += 1
 
 def is_dead(board):
     #todo make implementation of this
