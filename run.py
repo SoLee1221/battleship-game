@@ -7,7 +7,7 @@ board_size = 6
 
 def init_board(board):
     for i in range(board_size):
-    board.append([empty_char] * board_size)
+        board.append([empty_char] * board_size)
 
 def whole_board(player_board):
     for i in player_board:
@@ -29,8 +29,7 @@ number_of_rounds = 10
 empty_char = "."
 miss_char = "0"
 ship_char = "I"
-hit_chat = "X"
-
+hit_char = "X"
 
 """
 Create try function for incorrect input and correct input by user
@@ -40,6 +39,7 @@ Repeats invalid input until user inputs
 correct data to progress further in the game
 
 """
+
 def guess_input():
     guess_row = input("guess_row: ")
     valid_input = True
@@ -65,17 +65,18 @@ def guess_input():
             valid_input = False
     return guess_input   
 
-def output_game(last_round):
-    if guess_row == ship_row and guess_col == ship_col:
-        print("Congratulations you have sunk my ship!!!")
-        #todo
-    else:
-        if board[guess_row][guess_col] == "x":
-            print("You already guessed this one already!")
-        else:
-            print("You missed my ship!")
-            board[guess_row][guess_col] = "x"
-            whole_board(board)
+def fire(guess_row, guess_col, board):
+    if board[guess_row][guess_col] == empty_char:
+        board[guess_row][guess_col] = miss_char
+        print("You missed!")
+    elif board[guess_row][guess_col] == hit_char:
+        print("You already guessed this one already!")
+    elif board[guess_row][guess_col] == ship_char:
+        board[guess_row][guess_col] = hit_char
+        print("You sunk my ship!")
+    elif board[guess_row][guess_col] == miss_char:
+        print("You missed my ship!")
+
 
 def player_turn():
     guess_row = guess_input()
