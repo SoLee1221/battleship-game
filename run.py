@@ -69,34 +69,42 @@ def fire(guess_row, guess_col, board):
     if board[guess_row][guess_col] == empty_char:
         board[guess_row][guess_col] = miss_char
         print("You missed!")
-    elif board[guess_row][guess_col] == hit_char:
+        return True
+    if board[guess_row][guess_col] == hit_char:
         print("You already guessed this one already!")
-    elif board[guess_row][guess_col] == ship_char:
+        return False
+    if board[guess_row][guess_col] == ship_char:
         board[guess_row][guess_col] = hit_char
         print("You sunk my ship!")
-    elif board[guess_row][guess_col] == miss_char:
+        return True
+    if board[guess_row][guess_col] == miss_char:
         print("You missed my ship!")
+        return False
 
 
 def player_turn():
     guess_row = guess_input()
     guess_col = guess_input()
-    fire(guess_row, guess_col, ai_board)
+    return fire(guess_row, guess_col, ai_board)
 
 def ai_turn():
     guess_row = guess_input()
     guess_col = guess_input()
-    fire(guess_row, guess_col, player_board)
+    return fire(guess_row, guess_col, player_board)
 
 init_board(player_board)
 init_board(ai_board)
 
 for turn in range(number_of_rounds):
-    player_turn()
+    valid_move = player_turn()
+    while not valid_move:
+        player_turn()
     if is_dead(ai_board):
         print("You win!")
         break
-    ai_turn()
+    valid_move = ai_turn()
+    while not valid_move:
+        ai_turn()
     if is_dead(player_board):
         print("You loose!")
         break
