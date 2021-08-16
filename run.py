@@ -42,7 +42,6 @@ def guess_input(s):
     except ValueError:
         print("That's not a number")
         valid_input = False
-
     while not valid_input:
         guess_row = input(f"Guess {s}: ")
         valid_input = True
@@ -108,13 +107,14 @@ place_ship(player_board)
 place_ship(ai_board)
 
 for turn in range(number_of_rounds):
+    print("Round", turn + 1)
     print("Player's board: ")
     whole_board(player_board)
     print("Computer's board: ")
     whole_board(ai_board)
     valid_move = player_turn()
     while not valid_move:
-        player_turn()
+        valid_move = player_turn()
     if is_dead(ai_board):
         print("You win!")
         break
@@ -124,4 +124,3 @@ for turn in range(number_of_rounds):
     if is_dead(player_board):
         print("You loose!")
         break
-    print("Round", turn + 1)
