@@ -21,10 +21,6 @@ def random_row(player_board):
 def random_col(player_board):
     return randint(0, len(player_board[0]) -1)
 
-ship_row = random_row(player_board)
-ship_col = random_col(player_board)
-print(ship_row)
-print(ship_col)
 number_of_rounds = 10
 empty_char = "."
 miss_char = "0"
@@ -63,7 +59,7 @@ def guess_input():
         except ValueError:
             print("That's not a number")
             valid_input = False
-    return guess_input   
+    return guess_row     
 
 def fire(guess_row, guess_col, board):
     if board[guess_row][guess_col] == empty_char:
@@ -88,12 +84,22 @@ def player_turn():
     return fire(guess_row, guess_col, ai_board)
 
 def ai_turn():
-    guess_row = guess_input()
-    guess_col = guess_input()
+    guess_row = guess_random()
+    guess_col = guess_random()
     return fire(guess_row, guess_col, player_board)
+
+def place_ship(board):
+    #todo make real implentation of this
+    board[0][0] = ship_char
+
+def is_dead(board):
+    #todo make implementation of this
+    return False
 
 init_board(player_board)
 init_board(ai_board)
+place_ship(player_board)
+place_ship(ai_board)
 
 for turn in range(number_of_rounds):
     valid_move = player_turn()
@@ -109,4 +115,4 @@ for turn in range(number_of_rounds):
         print("You loose!")
         break
     print("Round", turn + 1)
-    output_game(turn == number_of_rounds -1)
+
