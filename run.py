@@ -13,19 +13,14 @@ def whole_board(player_board):
     for i in player_board:
         print(" ".join(i))
 
-whole_board(player_board)
-
-def random_row(player_board):
-    return randint(0, len(player_board) -1)
-
-def random_col(player_board):
-    return randint(0, len(player_board[0]) -1)
+def guess_random():
+    return randint(0, board_size -1)
 
 number_of_rounds = 10
 empty_char = "."
-miss_char = "0"
-ship_char = "I"
-hit_char = "X"
+miss_char = "x"
+ship_char = "@"
+hit_char = "*"
 
 """
 Create try function for incorrect input and correct input by user
@@ -89,8 +84,9 @@ def ai_turn():
     return fire(guess_row, guess_col, player_board)
 
 def place_ship(board):
-    #todo make real implentation of this
-    board[0][0] = ship_char
+    ship_row = guess_random()
+    ship_col = guess_random()
+    board[ship_row][ship_col] = ship_char
 
 def is_dead(board):
     #todo make implementation of this
@@ -102,6 +98,10 @@ place_ship(player_board)
 place_ship(ai_board)
 
 for turn in range(number_of_rounds):
+    print("Player's board: ")
+    whole_board(player_board)
+    print("Computer's board: ")
+    whole_board(ai_board)
     valid_move = player_turn()
     while not valid_move:
         player_turn()
@@ -115,4 +115,4 @@ for turn in range(number_of_rounds):
         print("You loose!")
         break
     print("Round", turn + 1)
-
+    
