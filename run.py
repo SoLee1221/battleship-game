@@ -31,8 +31,8 @@ correct data to progress further in the game
 
 """
 
-def guess_input():
-    guess_row = input("guess_row: ")
+def guess_input(s):
+    guess_row = input(f"Guess {s}: ")
     valid_input = True
     try:
         guess_row = int(guess_row)
@@ -44,7 +44,7 @@ def guess_input():
         valid_input = False
 
     while not valid_input:
-        guess_row = input("guess_row: ")
+        guess_row = input(f"Guess {s}: ")
         valid_input = True
         try:
             guess_row = int(guess_row)
@@ -69,13 +69,13 @@ def fire(guess_row, guess_col, board):
         print("You sunk my ship!")
         return True
     if board[guess_row][guess_col] == miss_char:
-        print("You missed my ship!")
+        print("You already guessed this one already!")
         return False
 
 
 def player_turn():
-    guess_row = guess_input()
-    guess_col = guess_input()
+    guess_row = guess_input("row")
+    guess_col = guess_input("col")
     return fire(guess_row, guess_col, ai_board)
 
 def ai_turn():
@@ -93,8 +93,14 @@ def place_ship(board):
             ships += 1
 
 def is_dead(board):
-    #todo make implementation of this
-    return False
+    for row in range(board_size):
+        for col in range(board_size):
+            if board[row][col] == ship_char:
+                return False    
+    print("All ships destroyed!")
+    return True
+            
+
 
 init_board(player_board)
 init_board(ai_board)
@@ -119,4 +125,3 @@ for turn in range(number_of_rounds):
         print("You loose!")
         break
     print("Round", turn + 1)
-    
