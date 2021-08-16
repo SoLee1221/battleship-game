@@ -5,23 +5,24 @@ ai_board = []
 
 board_size = 6
 
-for i in range(board_size):
-    board.append(["."] * board_size)
+def init_board(board):
+    for i in range(board_size):
+    board.append([empty_char] * board_size)
 
-def whole_board(board):
-    for i in board:
+def whole_board(player_board):
+    for i in player_board:
         print(" ".join(i))
 
-whole_board(board)
+whole_board(player_board)
 
-def random_row(board):
-    return randint(0, len(board) -1)
+def random_row(player_board):
+    return randint(0, len(player_board) -1)
 
-def random_col(board):
-    return randint(0, len(board[0]) -1)
+def random_col(player_board):
+    return randint(0, len(player_board[0]) -1)
 
-ship_row = random_row(board)
-ship_col = random_col(board)
+ship_row = random_row(player_board)
+ship_col = random_col(player_board)
 print(ship_row)
 print(ship_col)
 number_of_rounds = 10
@@ -85,6 +86,9 @@ def ai_turn():
     guess_row = guess_input()
     guess_col = guess_input()
     fire(guess_row, guess_col, player_board)
+
+init_board(player_board)
+init_board(ai_board)
 
 for turn in range(number_of_rounds):
     player_turn()
