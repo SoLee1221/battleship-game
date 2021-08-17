@@ -58,31 +58,31 @@ def guess_input(s):
             valid_input = False
     return guess_row     
 
-def fire(guess_row, guess_col, board):
+def fire(guess_row, guess_col, board, c):
     if board[guess_row][guess_col] == empty_char:
         board[guess_row][guess_col] = miss_char
-        print("You missed!")
+        print(f"{c} missed!")
         return True
     if board[guess_row][guess_col] == hit_char:
-        print("You already guessed this one already!")
+        print(f"{c} already guessed this one already!")
         return False
     if board[guess_row][guess_col] == ship_char:
         board[guess_row][guess_col] = hit_char
-        print("You sunk my ship!")
+        print(f"{c} sunk my ship!")
         return True
     if board[guess_row][guess_col] == miss_char:
-        print("You already guessed this one already!")
+        print(f"{c} has already guessed this one already!")
         return False
 
 def player_turn():
     guess_row = guess_input("row")
     guess_col = guess_input("col")
-    return fire(guess_row, guess_col, ai_board)
+    return fire(guess_row, guess_col, ai_board, "player")
 
 def ai_turn():
     guess_row = guess_random()
     guess_col = guess_random()
-    return fire(guess_row, guess_col, player_board)
+    return fire(guess_row, guess_col, player_board, "computer")
 
 def place_ship(board):
     ships = 0
@@ -100,7 +100,7 @@ def is_dead(board):
                 return False    
     print("All ships destroyed!")
     return True
-            
+           
 init_board(player_board)
 init_board(ai_board)
 place_ship(player_board)
