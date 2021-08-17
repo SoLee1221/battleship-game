@@ -119,6 +119,10 @@ def is_dead(board):
     print("All ships destroyed!")
     return True
 
+print("""---Welcome to battleships game---
+---In this game you will have 3 ships and the computer will have 3 ships---
+---The winner is determined when one opponent has defeated all 3 ships---
+---You may reset your ships by entering yes before the game starts other you can enter no---""")
 init_board(player_board)
 init_board(ai_board)
 
