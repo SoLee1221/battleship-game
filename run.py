@@ -76,6 +76,12 @@ def fire(guess_row, guess_col, board, c):
         print(f"{c} has already guessed this one already!")
         return False
 
+def clear_input():
+    clear_inp = input("Would you like to reset your ships position? Y/N: "):
+    if yes clear_board
+    else:
+        no continue or player_turn
+
 def player_turn():
     guess_row = guess_input("row")
     guess_col = guess_input("col")
@@ -98,8 +104,7 @@ def place_ship(board):
 def clear_board(board):
     for row in range(board_size):
         for col in range(board_size):
-            miss_char.ship_char.hit_char.clear()
-            
+            board[row][col] = empty_char
 
 
 def is_dead(board):
