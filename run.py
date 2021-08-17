@@ -10,10 +10,11 @@ def init_board(board):
         board.append([empty_char] * board_size)
 
 def whole_board(board, hide_ships):
-    for i in player_board:
+    for i in board:
         line = " ".join(i)
         if hide_ships == True:
-    return False
+            line = line.replace(ship_char, empty_char)
+        print(line)
 
 def guess_random():
     return randint(0, board_size -1)
@@ -38,7 +39,7 @@ def guess_input(s):
     valid_input = True
     try:
         guess_row = int(guess_row)
-        if guess_row > board_size or guess_row < 0:                    
+        if guess_row >= board_size or guess_row < 0:                    
             print("Invalid input")
             valid_input = False
     except ValueError:
@@ -108,9 +109,9 @@ place_ship(ai_board)
 for turn in range(number_of_rounds):
     print("Round", turn + 1)
     print("Player's board: ")
-    whole_board(player_board)
+    whole_board(player_board, False)
     print("Computer's board: ")
-    whole_board(ai_board)
+    whole_board(ai_board, True)
     valid_move = player_turn()
     while not valid_move:
         valid_move = player_turn()
