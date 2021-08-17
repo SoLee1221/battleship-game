@@ -9,9 +9,11 @@ def init_board(board):
     for i in range(board_size):
         board.append([empty_char] * board_size)
 
-def whole_board(player_board):
+def whole_board(board, hide_ships):
     for i in player_board:
-        print(" ".join(i))
+        line = " ".join(i)
+        if hide_ships == True:
+    return False
 
 def guess_random():
     return randint(0, board_size -1)
@@ -71,7 +73,6 @@ def fire(guess_row, guess_col, board):
         print("You already guessed this one already!")
         return False
 
-
 def player_turn():
     guess_row = guess_input("row")
     guess_col = guess_input("col")
@@ -99,8 +100,6 @@ def is_dead(board):
     print("All ships destroyed!")
     return True
             
-
-
 init_board(player_board)
 init_board(ai_board)
 place_ship(player_board)
