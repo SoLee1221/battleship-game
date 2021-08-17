@@ -57,7 +57,9 @@ def guess_input(s):
             print("That's not a number")
             valid_input = False
     return guess_row     
-
+"""
+Prints output for player and computer depending on input given
+"""
 def fire(guess_row, guess_col, board, c):
     if board[guess_row][guess_col] == empty_char:
         board[guess_row][guess_col] = miss_char
@@ -92,6 +94,13 @@ def place_ship(board):
         if board[ship_row][ship_col] != ship_char:
             board[ship_row][ship_col] = ship_char
             ships += 1
+
+def clear_board(board):
+    for row in range(board_size):
+        for col in range(board_size):
+            miss_char.ship_char.hit_char.clear()
+            
+
 
 def is_dead(board):
     for row in range(board_size):
