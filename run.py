@@ -77,10 +77,16 @@ def fire(guess_row, guess_col, board, c):
         return False
 
 def clear_input():
-    clear_inp = input("Would you like to reset your ships position? Y/N: "):
-    if yes clear_board
-    else:
-        no continue or player_turn
+    loop = True
+    while loop:
+        print("Player's board: ")
+        whole_board(player_board, False)
+        clear_inp = input("Would you like to reset your ships position? yes/no: ")
+        if "yes" == clear_inp:
+            clear_board(player_board)
+            place_ship(player_board)
+        else:
+            loop = False
 
 def player_turn():
     guess_row = guess_input("row")
@@ -106,7 +112,6 @@ def clear_board(board):
         for col in range(board_size):
             board[row][col] = empty_char
 
-
 def is_dead(board):
     for row in range(board_size):
         for col in range(board_size):
@@ -114,11 +119,19 @@ def is_dead(board):
                 return False    
     print("All ships destroyed!")
     return True
-           
+         
 init_board(player_board)
 init_board(ai_board)
+
+another_game = True
+while another_game:
+    place_ship(player_board)
+    place_ship(ai_board)
+    clear_input
+
 place_ship(player_board)
 place_ship(ai_board)
+clear_input()
 
 for turn in range(number_of_rounds):
     print("Round", turn + 1)
