@@ -3,7 +3,7 @@ from random import randint
 player_board = []
 ai_board = []
 
-board_size = 6
+board_size = 5
 
 def init_board(board):
     for i in range(board_size):
@@ -19,7 +19,6 @@ def whole_board(board, hide_ships):
 def guess_random():
     return randint(0, board_size -1)
 
-number_of_rounds = 10
 empty_char = "."
 miss_char = "X"
 ship_char = "@"
@@ -119,7 +118,7 @@ def is_dead(board):
                 return False    
     print("All ships destroyed!")
     return True
-         
+
 init_board(player_board)
 init_board(ai_board)
 
@@ -127,27 +126,30 @@ another_game = True
 while another_game:
     place_ship(player_board)
     place_ship(ai_board)
-    clear_input
+    clear_input()
 
-place_ship(player_board)
-place_ship(ai_board)
-clear_input()
-
-for turn in range(number_of_rounds):
-    print("Round", turn + 1)
-    print("Player's board: ")
-    whole_board(player_board, False)
-    print("Computer's board: ")
-    whole_board(ai_board, True)
-    valid_move = player_turn()
-    while not valid_move:
+    turn = 0
+    while True:
+        print("Round", turn + 1)
+        print("Player's board: ")
+        whole_board(player_board, False)
+        print("Computer's board: ")
+        whole_board(ai_board, True)
         valid_move = player_turn()
-    if is_dead(ai_board):
-        print("You win!")
-        break
-    valid_move = ai_turn()
-    while not valid_move:
-        ai_turn()
-    if is_dead(player_board):
-        print("You loose!")
-        break
+        while not valid_move:
+            valid_move = player_turn()
+        if is_dead(ai_board):
+            print("You win!")
+            break
+        valid_move = ai_turn()
+        while not valid_move:
+            valid_move = ai_turn()
+        if is_dead(player_board):
+            print("You loose!")
+            break
+        turn += 1
+    clear_board(player_board)
+    clear_board(ai_board)
+    replay_inp = input("Would you like to play again? yes/no: ")
+    if "yes" != clear_inp:
+        another_game = False
