@@ -32,6 +32,13 @@ The player will take turns with the computer having guesses on sinking each othe
 • Allows more than 1 player to play instead of vs computer.  
 • Allow players to put ships where they like.  
 • Increase the amount of ships.  
-• Limited amount of rounds.
+• Limited amount of rounds.  
+
+<h3>Data model</h3>  
+
+I created a simple board for both player and computer with a fixed size for both computer and player
+
+
+
 
 

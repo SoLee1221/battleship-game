@@ -13,11 +13,6 @@ created this function because heroku didn't show input() as i wanted
 """
 
 
-def user_input(message):
-    print(message, end="")
-    return input()
-
-
 def init_board(board):
     for _ in range(board_size):
         board.append([empty_char] * board_size)
@@ -44,7 +39,7 @@ the game
 
 
 def guess_input(s):
-    guess_row = user_input(f"Guess {s}: ")
+    guess_row = input(f"Guess {s}: ")
     valid_input = True
     try:
         guess_row = int(guess_row)
@@ -55,7 +50,7 @@ def guess_input(s):
         print("That's not a number")
         valid_input = False
     while not valid_input:
-        guess_row = user_input(f"Guess {s}: ")
+        guess_row = input(f"Guess {s}: ")
         valid_input = True
         try:
             guess_row = int(guess_row)
@@ -95,7 +90,7 @@ def clear_input():
     while loop:
         print("Player's board: ")
         whole_board(player_board, False)
-        clear_inp = user_input("Would you like to reset your"
+        clear_inp = input("Would you like to reset your"
                                "ships position? yes/no:")
         if "yes" == clear_inp:
             clear_board(player_board)
@@ -176,6 +171,6 @@ while another_game:
         turn += 1
     clear_board(player_board)
     clear_board(ai_board)
-    replay_inp = user_input("Would you like to play again? yes/no: ")
+    replay_inp = input("Would you like to play again? yes/no: ")
     if "yes" != replay_inp:
         another_game = False
