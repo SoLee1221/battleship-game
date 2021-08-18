@@ -88,8 +88,8 @@ def clear_input():
     while loop:
         print("Player's board: ")
         whole_board(player_board, False)
-        clear_inp = input("Would you like to reset your"\
-        "ships position? yes/no:")
+        clear_inp = input("Would you like to reset your"
+                          "ships position? yes/no:")
         if "yes" == clear_inp:
             clear_board(player_board)
             place_ship(player_board)
