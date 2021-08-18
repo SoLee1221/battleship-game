@@ -80,10 +80,10 @@ guess_col and guess_row is where the inputs are taken in by user and computer to
 • Once you have clicked "create new app" you then fill in the relevant data to you  
 • Once that is done first go to the "settings" tab and click on "settings" scroll down until you see a part that says add builpack.  
 • You want to first select "Python" then click "save changes"  
-• After you selected python go back to add buildpack and select "nodejs" then click "save changes".
+• After you selected python go back to add buildpack and select "nodejs" then click "save changes".  
 • It's important that "python" is showing on top "nodejs" you can click and drag to change order.  
 • Next you can scroll up and go to the "deploy" section.  
-• The deployment method you want to select is "Github" and confirm that you want to connect to "Github".
+• The deployment method you want to select is "Github" and confirm that you want to connect to "Github".  
 • Go to search for repository to connect to and search for your repository with the correct file name you saved it to and click connect.  
 • Once that is done you scroll down and click on "Enable automatic deploys" and then after that click on deploy branch.  
 
