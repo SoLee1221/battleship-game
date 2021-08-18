@@ -5,19 +5,22 @@ ai_board = []
 
 board_size = 5
 
+
 def init_board(board):
     for i in range(board_size):
         board.append([empty_char] * board_size)
 
+
 def whole_board(board, hide_ships):
     for i in board:
         line = " ".join(i)
-        if hide_ships == True:
+        if hide_ships:
             line = line.replace(ship_char, empty_char)
         print(line)
 
+
 def guess_random():
-    return randint(0, board_size -1)
+    return randint(0, board_size-1)
 
 empty_char = "."
 miss_char = "X"
@@ -25,13 +28,12 @@ ship_char = "@"
 hit_char = "*"
 
 """
-Create try function for incorrect input and correct input by user
-col and row example none integer or str 
-Also
-Repeats invalid input until user inputs 
-correct data to progress further in the game
-
+Create function for incorrect input and correct input by user
+col and row example none integer or str also
+Repeats invalid input until user inputs correct data to progress further in
+the game
 """
+
 
 def guess_input(s):
     guess_row = input(f"Guess {s}: ")
@@ -59,6 +61,8 @@ def guess_input(s):
 """
 Prints output for player and computer depending on input given
 """
+
+
 def fire(guess_row, guess_col, board, c):
     if board[guess_row][guess_col] == empty_char:
         board[guess_row][guess_col] = miss_char
@@ -75,27 +79,31 @@ def fire(guess_row, guess_col, board, c):
         print(f"{c} has already guessed this one already!")
         return False
 
+
 def clear_input():
     loop = True
     while loop:
         print("Player's board: ")
         whole_board(player_board, False)
-        clear_inp = input("Would you like to reset your ships position? yes/no: ")
+        clear_inp = input("Would you like to reset your ships position? yes/no:")
         if "yes" == clear_inp:
             clear_board(player_board)
             place_ship(player_board)
         else:
             loop = False
 
+
 def player_turn():
     guess_row = guess_input("row")
     guess_col = guess_input("col")
     return fire(guess_row, guess_col, ai_board, "player")
 
+
 def ai_turn():
     guess_row = guess_random()
     guess_col = guess_random()
     return fire(guess_row, guess_col, player_board, "computer")
+
 
 def place_ship(board):
     ships = 0
@@ -106,10 +114,12 @@ def place_ship(board):
             board[ship_row][ship_col] = ship_char
             ships += 1
 
+
 def clear_board(board):
     for row in range(board_size):
         for col in range(board_size):
             board[row][col] = empty_char
+
 
 def is_dead(board):
     for row in range(board_size):
@@ -122,7 +132,7 @@ def is_dead(board):
 print("""---Welcome to battleships game---
 ---In this game you will have 3 ships and the computer will have 3 ships---
 ---The winner is determined when one opponent has defeated all 3 ships---
----You may reset your ships by entering yes before the game starts other you can enter no---""")
+---You may reset your ships position before game starts--""")
 init_board(player_board)
 init_board(ai_board)
 
