@@ -36,7 +36,33 @@ The player will take turns with the computer having guesses on sinking each othe
 
 <h3>Data model</h3>  
 
-I created a simple board for both player and computer with a fixed size for both computer and player
+I created a simple board for both player and computer with a fixed size for both computer and player.  
+whole_board stores how big the board should be for both computer and player, it also stores in the sybols for ships and hidden ships for the computer (player_board) (ai_board).  
+guess_col and guess_row is where the inputs are taken in by user and computer to show where they are trying to shoot.
+
+<h3>Testing</h3>
+
+• I have tested for player board to print.  
+• I have tested for computer board to print with player board.  
+• I have tested for user input to only be integers.  
+• I have tested for user not able to input string.
+• I have tested for user not able to put numbers bigger or smaller than the actual board.  
+• I have tested for sybols such as "@" "*" "X" "." to show for both computer and player.  
+• I have tested for computer's ships to be hidden from player to prevent cheating.  
+• I have tested for the print statements for row and col print correctly.  
+• I have tested for number of rounds are on going to until the game ends.  
+• I have tested for when a player or computer hits a ship it prints the correct statement.  
+• I have tested for when a player or computer misses it prints the correct statement.  
+• I have tested for when player has input invald data it prints the correct statement.  
+• I have tested for when game is over player is able to play again.  
+• I have tested for before the game starts the player is able to reset its ships position if wanted.  
+• I have tested for when player wants to change ship position before game starts it loops so player can keep changing position of ships until they are satisfied with the output they have.  
+• I have tested for when computer shoots a spot it doesn't crash the system.  
+• I have tested for when player has already shot a spot it's still their turn until a valid input is given.
+
+
+
+
 
 
 
