@@ -2,8 +2,20 @@ from random import randint
 
 player_board = []
 ai_board = []
-
+empty_char = "."
+miss_char = "X"
+ship_char = "@"
+hit_char = "*"
 board_size = 5
+
+"""
+created this function because heroku didn't show input() as i wanted
+"""
+
+
+def user_input(message):
+    print(message, end="")
+    return input()
 
 
 def init_board(board):
@@ -23,11 +35,6 @@ def guess_random():
     return randint(0, board_size-1)
 
 
-empty_char = "."
-miss_char = "X"
-ship_char = "@"
-hit_char = "*"
-
 """
 Create function for incorrect input and correct input by user
 col and row example none integer or str also
@@ -37,7 +44,7 @@ the game
 
 
 def guess_input(s):
-    guess_row = input(f"Guess {s}: ")
+    guess_row = user_input(f"Guess {s}: ")
     valid_input = True
     try:
         guess_row = int(guess_row)
@@ -48,7 +55,7 @@ def guess_input(s):
         print("That's not a number")
         valid_input = False
     while not valid_input:
-        guess_row = input(f"Guess {s}: ")
+        guess_row = user_input(f"Guess {s}: ")
         valid_input = True
         try:
             guess_row = int(guess_row)
@@ -88,7 +95,7 @@ def clear_input():
     while loop:
         print("Player's board: ")
         whole_board(player_board, False)
-        clear_inp = input("Would you like to reset your"
+        clear_inp = user_input("Would you like to reset your"
                           "ships position? yes/no:")
         if "yes" == clear_inp:
             clear_board(player_board)
@@ -169,6 +176,6 @@ while another_game:
         turn += 1
     clear_board(player_board)
     clear_board(ai_board)
-    replay_inp = input("Would you like to play again? yes/no: ")
+    replay_inp = user_input("Would you like to play again? yes/no: ")
     if "yes" != replay_inp:
         another_game = False
