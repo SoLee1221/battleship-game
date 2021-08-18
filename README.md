@@ -1,45 +1,37 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+<h1>Unreal Battleships game</h1>  
 
-Welcome SoLee1221,
+Unreal Battleships game is a python coded game, which runs on Heroku  
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use.
+Players can try to sink all battleships of the computer before the computer sinks theirs.  
+Each battle ships takes one square on the board and there is a total of 3 battleships for the player and computer.  
 
-## Gitpod Reminders
+<h3>How to play</h3>  
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+Unreal battleships is a classic pen and paper game.  
+In Unreal battleships you are presented with rules and welcome message.  
+Each player (computer and player) have 3 ships each and the opponent has to sink them all in order to win.  
+There are indications showing if a player or computer has taken their turn by showing symbols such as "x"  
+hit an empty slot but missed. The second indication is "*" which is if a player or computer has hit a ship.  
+The last two indications are *@* for ships and "." for empty spaces.
+The player will take turns with the computer having guesses on sinking each others ships.  
 
-`python3 -m http.server`
+<h3>Features</h3>  
 
-A blue button should appear to click: *Make Public*,
+• Randomises ships for both computer and player.  
+• Doesn't allow user to input numbers that are bigger or smaller than the actual board.  
+• Doesn't allow user to input strings when numbers are only needed for playing the game.  
+• When users have already guessed a spot that they have already shot, it outputs a message indicating the user they have already guessed that.  
+• Shows a message when player and computer miss each time they shoot.  
+• Shows message each time player or computer have sunk the other persons ship.  
+• At the begining it allows player to randomise their ships until they are happy with the positions.  
+• Once game is over if player or computer sinks all ships, it allows player to play again.
 
-Another blue button should appear to click: *Open Browser*.
+<h3>Future features</h3>  
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+• Allows players to insert names.  
+• Allows more than 1 player to play instead of vs computer.  
+• Allow players to put ships where they like.  
+• Increase the amount of ships.  
+• Limited amount of rounds.
 
-A blue button should appear to click: *Make Public*,
 
-Another blue button should appear to click: *Open Browser*.
-
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
-
-## Updates Since The Instructional Video
-
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
-
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
-
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
-
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
-
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
-
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
---------
-
-Happy coding!
