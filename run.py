@@ -7,7 +7,7 @@ board_size = 5
 
 
 def init_board(board):
-    for i in range(board_size):
+    for _ in range(board_size):
         board.append([empty_char] * board_size)
 
 
@@ -21,6 +21,7 @@ def whole_board(board, hide_ships):
 
 def guess_random():
     return randint(0, board_size-1)
+
 
 empty_char = "."
 miss_char = "X"
@@ -40,7 +41,7 @@ def guess_input(s):
     valid_input = True
     try:
         guess_row = int(guess_row)
-        if guess_row >= board_size or guess_row < 0:                    
+        if guess_row >= board_size or guess_row < 0:
             print("Invalid input")
             valid_input = False
     except ValueError:
@@ -57,7 +58,9 @@ def guess_input(s):
         except ValueError:
             print("That's not a number")
             valid_input = False
-    return guess_row     
+    return guess_row
+
+
 """
 Prints output for player and computer depending on input given
 """
@@ -85,7 +88,8 @@ def clear_input():
     while loop:
         print("Player's board: ")
         whole_board(player_board, False)
-        clear_inp = input("Would you like to reset your ships position? yes/no:")
+        clear_inp = input("Would you like to reset your"\
+        "ships position? yes/no:")
         if "yes" == clear_inp:
             clear_board(player_board)
             place_ship(player_board)
@@ -125,9 +129,10 @@ def is_dead(board):
     for row in range(board_size):
         for col in range(board_size):
             if board[row][col] == ship_char:
-                return False    
+                return False
     print("All ships destroyed!")
     return True
+
 
 print("""---Welcome to battleships game---
 ---In this game you will have 3 ships and the computer will have 3 ships---
@@ -165,5 +170,5 @@ while another_game:
     clear_board(player_board)
     clear_board(ai_board)
     replay_inp = input("Would you like to play again? yes/no: ")
-    if "yes" != clear_inp:
+    if "yes" != replay_inp:
         another_game = False
