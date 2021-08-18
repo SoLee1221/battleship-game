@@ -8,6 +8,7 @@ Each battle ships takes one square on the board and there is a total of 3 battle
 <h3>How to play</h3>  
 
 Unreal battleships is a classic pen and paper game.  
+More information can be found on this website about battleships game https://en.wikipedia.org/wiki/Battleship.  
 In Unreal battleships you are presented with rules and welcome message.  
 Each player (computer and player) have 3 ships each and the opponent has to sink them all in order to win.  
 There are indications showing if a player or computer has taken their turn by showing symbols such as "x"  
@@ -58,7 +59,38 @@ guess_col and guess_row is where the inputs are taken in by user and computer to
 • I have tested for before the game starts the player is able to reset its ships position if wanted.  
 • I have tested for when player wants to change ship position before game starts it loops so player can keep changing position of ships until they are satisfied with the output they have.  
 • I have tested for when computer shoots a spot it doesn't crash the system.  
-• I have tested for when player has already shot a spot it's still their turn until a valid input is given.
+• I have tested for when player has already shot a spot it's still their turn until a valid input is given.  
+
+<h3>Bugs</h3>
+
+• Heroku deployment isn't showing the promp until 1 or 2 inputs, i have tested this on locally with no problems and on other interpreters.
+
+<h3>Validator testing</h3>
+
+• PEP8  
+• No errors was found from pep8online.com  
+
+<h3>Deployment</h3>
+
+• Steps for deployment.  
+• open heroku by going on dashboard.heroku.com  
+• After opening Heroku
+• On the right side click "New" with arrow point up and down beside it  
+• After clicking "New" click "create new app"  
+• Once you have clicked "create new app" you then fill in the relevant data to you  
+• Once that is done first go to the "settings" tab and click on "settings" scroll down until you see a part that says add builpack.  
+• You want to first select "Python" then click "save changes"  
+• After you selected python go back to add buildpack and select "nodejs" then click "save changes".
+• It's important that "python" is showing on top "nodejs" you can click and drag to change order.  
+• Next you can scroll up and go to the "deploy" section.  
+• The deployment method you want to select is "Github" and confirm that you want to connect to "Github".
+• Go to search for repository to connect to and search for your repository with the correct file name you saved it to and click connect.  
+• Once that is done you scroll down and click on "Enable automatic deploys" and then after that click on deploy branch.  
+
+<h3>Credits</h3>
+
+• Wikipedia for more details about battleships game.  
+• Inspiration from code institute battleship readme.  
 
 
 
